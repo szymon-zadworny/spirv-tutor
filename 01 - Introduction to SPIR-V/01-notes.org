@@ -1,0 +1,13 @@
+#+TITLE: SPIR-V hello world
+
+* Weird things
+- The code is represented as an AST
+- All intermediate values are only written to once. Everything is const
+
+* SPIR-V module structure
+A module needs to declare its [[https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#Capability][capability]]. 
+
+** Declaring types
+Types have to be declared with OpTypeX.
+
+Functions can be declared with OpTypeFunction 
