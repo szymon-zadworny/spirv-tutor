@@ -1,0 +1,41 @@
+#+TITLE: Declaring variables in SPIR-V
+
+* Reading the spec
+The spec consists of a table, for example
+
+- OpTypeFloat
+| Instruction Length | Opcode | Form        | Parameter     |
+|--------------------+--------+-------------+---------------|
+|                  4 |     23 | Result <id> | Literal Width |
+|--------------------+--------+-------------+---------------|
+
+Example usage:
+
+#+BEGIN_SRC spirv
+%float = OpTypeFloat 32
+#+END_SRC
+
+Declares a 32-bit floating-point type named "float"
+
+* Types, Pointers, Variables
+- OpTypeX declares basic literal types
+- OpTypePointer declares pointers to said types
+  
+  Example:
+  #+BEGIN_SRC spirv
+  %floatptr = OpTypePointer Private %float
+  #+END_SRC
+
+- OpVariable allocates an object and returns a pointer to it
+
+  Example:
+  #+BEGIN_SRC spirv
+  %myvar = OpVariable %floatptr Private
+  #+END_SRC
+
+* Constants
+You can declare a constant with the OpConstant instruction, e.g.
+
+#+BEGIN_SRC spirv
+%init = OpConstant %float 3.14
+#+END_SRC
